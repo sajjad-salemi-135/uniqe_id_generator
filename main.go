@@ -59,10 +59,3 @@ func (s *snowflake) Generator() int64 {
 	return id
 }
 
-func main() {
-	sr := Newsnowflake()
-	id := sr.Generator()
-	ids := fmt.Sprintf("%034b\n", id)
-	fmt.Println(ids)
-	
-}
