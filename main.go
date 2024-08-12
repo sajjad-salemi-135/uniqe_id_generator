@@ -22,14 +22,14 @@ type snowflake struct {
 	mux      sync.Mutex
 }
 
-func newsnowflake() *snowflake {
+func Newsnowflake() *snowflake {
 	return &snowflake{
 		sequence: 0,
 		time:     -1,
 	}
 }
 
-func (s *snowflake) generator() int64 {
+func (s *snowflake) Generator() int64 {
 	s.mux.Lock()
 	defer s.mux.Unlock()
 
@@ -60,8 +60,8 @@ func (s *snowflake) generator() int64 {
 }
 
 func main() {
-	sr := newsnowflake()
-	id := sr.generator()
+	sr := Newsnowflake()
+	id := sr.Generator()
 	ids := fmt.Sprintf("%034b\n", id)
 	fmt.Println(ids)
 	
